@@ -35,4 +35,8 @@ public abstract class StudentsModuleUnitTestCase {
             Optional.of(student)
         );
     }
+
+    protected void shouldHaveRemoved(StudentId id) {
+        verify(repository, atLeastOnce()).remove(id);
+    }
 }
