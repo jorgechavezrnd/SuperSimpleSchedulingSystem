@@ -4,6 +4,7 @@ import com.harbor.example.module.classes.ClassesModuleUnitTestCase;
 import com.harbor.example.module.classes.application.ClassResponse;
 import com.harbor.example.module.classes.domain.*;
 import com.harbor.example.module.classes.domain.Class;
+import com.harbor.example.module.shared.domain.ClassId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

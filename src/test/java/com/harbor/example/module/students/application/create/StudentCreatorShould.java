@@ -19,7 +19,7 @@ final class StudentCreatorShould extends StudentsModuleUnitTestCase {
     void create_a_valid_student() {
         Student student = StudentMother.random();
 
-        creator.create(student.id(), student.firstName(), student.lastName());
+        creator.create(student.id(), student.firstName(), student.lastName(), student.getClassesIds());
 
         shouldHaveSaved(student);
     }

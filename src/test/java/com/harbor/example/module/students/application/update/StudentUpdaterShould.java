@@ -20,11 +20,12 @@ final class StudentUpdaterShould extends StudentsModuleUnitTestCase {
         Student student = StudentMother.random();
         StudentFirstName newFirstName = StudentFirstNameMother.random();
         StudentLastName newLastName = StudentLastNameMother.random();
-        Student studentUpdated = StudentMother.create(student.id(), newFirstName, newLastName);
+        StudentClassesIds newClassesIds = StudentClassesIdsMother.random();
+        Student studentUpdated = StudentMother.create(student.id(), newFirstName, newLastName, newClassesIds);
 
         shouldReturnOnSearch(student.id(), student);
 
-        updater.update(student.id(), newFirstName, newLastName);
+        updater.update(student.id(), newFirstName, newLastName, newClassesIds);
 
         shouldHaveSaved(studentUpdated);
     }

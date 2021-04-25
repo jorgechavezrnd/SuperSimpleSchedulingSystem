@@ -13,10 +13,10 @@ public final class StudentUpdater {
         this.repository = repository;
     }
 
-    public void update(StudentId id, StudentFirstName firstName, StudentLastName lastName) throws StudentNotExist {
+    public void update(StudentId id, StudentFirstName firstName, StudentLastName lastName, StudentClassesIds classesIds) throws StudentNotExist {
         Student student = repository.search(id).orElseThrow(() -> new StudentNotExist(id));
 
-        Student studentUpdated = new Student(student.id(), firstName, lastName);
+        Student studentUpdated = new Student(student.id(), firstName, lastName, classesIds);
 
         repository.save(studentUpdated);
     }

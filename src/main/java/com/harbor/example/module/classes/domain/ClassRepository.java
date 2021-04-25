@@ -1,5 +1,7 @@
 package com.harbor.example.module.classes.domain;
 
+import com.harbor.example.module.shared.domain.ClassId;
+
 import java.util.List;
 import java.util.Optional;
 

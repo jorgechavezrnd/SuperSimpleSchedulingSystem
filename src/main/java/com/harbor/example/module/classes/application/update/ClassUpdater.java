@@ -2,6 +2,7 @@ package com.harbor.example.module.classes.application.update;
 
 import com.harbor.example.module.classes.domain.*;
 import com.harbor.example.module.classes.domain.Class;
+import com.harbor.example.module.shared.domain.ClassId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

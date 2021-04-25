@@ -1,9 +1,11 @@
 package com.harbor.example.module.classes.domain;
 
+import com.harbor.example.module.shared.domain.ClassId;
+
 import java.util.Objects;
 
 public final class Class {
-    private final ClassId          id;
+    private final ClassId id;
     private final ClassCode        code;
     private final ClassTitle       title;
     private final ClassDescription description;

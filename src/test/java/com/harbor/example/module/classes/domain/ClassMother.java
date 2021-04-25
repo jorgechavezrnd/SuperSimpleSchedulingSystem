@@ -1,6 +1,7 @@
 package com.harbor.example.module.classes.domain;
 
 import com.harbor.example.module.classes.application.ClassResponse;
+import com.harbor.example.module.shared.domain.ClassId;
 
 public final class ClassMother {
     public static Class create(ClassId id, ClassCode code, ClassTitle title, ClassDescription description) {

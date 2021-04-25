@@ -2,7 +2,7 @@ package com.harbor.example.module.classes;
 
 import com.harbor.example.module.classes.application.ClassesResponse;
 import com.harbor.example.module.classes.domain.Class;
-import com.harbor.example.module.classes.domain.ClassId;
+import com.harbor.example.module.shared.domain.ClassId;
 import com.harbor.example.module.classes.domain.ClassMother;
 import com.harbor.example.module.classes.domain.ClassRepository;
 import org.junit.jupiter.api.BeforeEach;

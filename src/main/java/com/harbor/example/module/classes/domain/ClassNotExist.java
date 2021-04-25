@@ -1,5 +1,6 @@
 package com.harbor.example.module.classes.domain;
 
+import com.harbor.example.module.shared.domain.ClassId;
 import com.harbor.example.module.shared.domain.DomainError;
 
 public final class ClassNotExist extends DomainError {

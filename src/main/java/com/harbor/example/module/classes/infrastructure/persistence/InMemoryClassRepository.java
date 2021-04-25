@@ -2,6 +2,7 @@ package com.harbor.example.module.classes.infrastructure.persistence;
 
 import com.harbor.example.module.classes.domain.*;
 import com.harbor.example.module.classes.domain.Class;
+import com.harbor.example.module.shared.domain.ClassId;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package com.harbor.example.module.classes.application.find;
 
 import com.harbor.example.module.classes.application.ClassResponse;
-import com.harbor.example.module.classes.domain.ClassId;
+import com.harbor.example.module.shared.domain.ClassId;
 import com.harbor.example.module.classes.domain.ClassNotExist;
 import com.harbor.example.module.classes.domain.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;

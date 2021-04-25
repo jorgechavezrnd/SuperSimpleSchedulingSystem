@@ -4,7 +4,7 @@ import com.harbor.example.module.classes.application.ClassResponse;
 import com.harbor.example.module.classes.application.find.ClassFinder;
 import com.harbor.example.module.classes.application.remove.ClassRemover;
 import com.harbor.example.module.classes.application.search_all.AllClassesSearcher;
-import com.harbor.example.module.classes.domain.ClassId;
+import com.harbor.example.module.shared.domain.ClassId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

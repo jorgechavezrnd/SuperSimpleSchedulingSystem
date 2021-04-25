@@ -13,8 +13,8 @@ public final class StudentCreator {
         this.repository = repository;
     }
 
-    public void create(StudentId id, StudentFirstName firstName, StudentLastName lastName) {
-        Student student = Student.create(id, firstName, lastName);
+    public void create(StudentId id, StudentFirstName firstName, StudentLastName lastName, StudentClassesIds classesIds) {
+        Student student = Student.create(id, firstName, lastName, classesIds);
 
         repository.save(student);
     }

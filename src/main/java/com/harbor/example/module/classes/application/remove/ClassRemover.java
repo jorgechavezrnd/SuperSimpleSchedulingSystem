@@ -1,6 +1,6 @@
 package com.harbor.example.module.classes.application.remove;
 
-import com.harbor.example.module.classes.domain.ClassId;
+import com.harbor.example.module.shared.domain.ClassId;
 import com.harbor.example.module.classes.domain.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

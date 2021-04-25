@@ -4,7 +4,7 @@ import com.harbor.example.module.classes.application.create.ClassCreator;
 import com.harbor.example.module.classes.application.update.ClassUpdater;
 import com.harbor.example.module.classes.domain.ClassCode;
 import com.harbor.example.module.classes.domain.ClassDescription;
-import com.harbor.example.module.classes.domain.ClassId;
+import com.harbor.example.module.shared.domain.ClassId;
 import com.harbor.example.module.classes.domain.ClassTitle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
