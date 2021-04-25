@@ -20,7 +20,7 @@ final class StudentFinderShould extends StudentsModuleUnitTestCase {
     }
 
     @Test
-    void update_a_student() {
+    void find_a_student() {
         Student student = StudentMother.random();
 
         shouldReturnOnSearch(student.id(), student);
@@ -31,7 +31,7 @@ final class StudentFinderShould extends StudentsModuleUnitTestCase {
     }
 
     @Test
-    void throw_student_not_exist_exception() {
+    void throw_student_not_exist_exception_on_search_not_existing_student() {
         StudentId studentId = StudentIdMother.random();
 
         Exception exception = assertThrows(StudentNotExist.class, () -> {
