@@ -34,9 +34,7 @@ final class StudentFinderShould extends StudentsModuleUnitTestCase {
     void throw_student_not_exist_exception_on_search_not_existing_student() {
         StudentId studentId = StudentIdMother.random();
 
-        Exception exception = assertThrows(StudentNotExist.class, () -> {
-            finder.find(studentId);
-        });
+        Exception exception = assertThrows(StudentNotExist.class, () -> finder.find(studentId));
 
         assertEquals(new StudentNotExist(studentId).getMessage(), exception.getMessage());
     }

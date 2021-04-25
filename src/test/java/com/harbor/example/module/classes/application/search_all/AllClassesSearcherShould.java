@@ -22,7 +22,7 @@ final class AllClassesSearcherShould extends ClassesModuleUnitTestCase {
     void return_all_classes() {
         ClassesResponse classes = ClassesResponseMother.random();
 
-        shouldReturn(classes);
+        shouldReturnOnSearchAll(classes);
 
         assertEquals(classes.classes(), searcher.search().classes());
     }
@@ -31,7 +31,7 @@ final class AllClassesSearcherShould extends ClassesModuleUnitTestCase {
     void return_empty_where_there_are_no_classes() {
         ClassesResponse classes = ClassesResponseMother.empty();
 
-        shouldReturn(classes);
+        shouldReturnOnSearchAll(classes);
 
         assertEquals(classes.classes(), searcher.search().classes());
     }
