@@ -57,7 +57,7 @@ public final class ClassesGetController {
     }
 
     @RequestMapping(value = "/classes/delete/{id}", method = RequestMethod.GET)
-    public String deleteClass(@PathVariable("id") String id, Model model) {
+    public String deleteClass(@PathVariable("id") String id) {
         remover.remove(new ClassId(id));
 
         return "redirect:/classes";
