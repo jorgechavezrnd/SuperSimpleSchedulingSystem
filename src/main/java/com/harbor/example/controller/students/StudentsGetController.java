@@ -2,9 +2,12 @@ package com.harbor.example.controller.students;
 
 import com.harbor.example.module.classes.application.ClassResponse;
 import com.harbor.example.module.classes.application.find.ClassFinder;
+import com.harbor.example.module.classes.application.search_all.AllClassesSearcher;
 import com.harbor.example.module.shared.domain.ClassId;
 import com.harbor.example.module.students.application.StudentResponse;
+import com.harbor.example.module.students.application.deregister_class.ClassDeregisterer;
 import com.harbor.example.module.students.application.find.StudentFinder;
+import com.harbor.example.module.students.application.register_class.ClassRegisterer;
 import com.harbor.example.module.students.application.remove.StudentRemover;
 import com.harbor.example.module.students.application.search_all.AllStudentsSearcher;
 import com.harbor.example.module.students.domain.StudentId;
@@ -24,13 +27,21 @@ public final class StudentsGetController {
     private final StudentFinder       finder;
     private final StudentRemover      remover;
     private final ClassFinder         classFinder;
+    private final AllClassesSearcher  allClassesSearcher;
+    private final ClassRegisterer     classRegisterer;
+    private final ClassDeregisterer   classDeregisterer;
 
     @Autowired
-    public StudentsGetController(AllStudentsSearcher searcher, StudentFinder finder, StudentRemover remover, ClassFinder classFinder) {
-        this.searcher    = searcher;
-        this.finder      = finder;
-        this.remover     = remover;
-        this.classFinder = classFinder;
+    public StudentsGetController(AllStudentsSearcher searcher, StudentFinder finder, StudentRemover remover,
+                                 ClassFinder classFinder, AllClassesSearcher  allClassesSearcher,
+                                 ClassRegisterer classRegisterer, ClassDeregisterer   classDeregisterer) {
+        this.searcher           = searcher;
+        this.finder             = finder;
+        this.remover            = remover;
+        this.classFinder        = classFinder;
+        this.allClassesSearcher = allClassesSearcher;
+        this.classRegisterer    = classRegisterer;
+        this.classDeregisterer  = classDeregisterer;
     }
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
@@ -43,13 +54,21 @@ public final class StudentsGetController {
     @RequestMapping(value = "/students/{id}", method = RequestMethod.GET)
     public String getStudent(@PathVariable("id") String id, Model model) {
         StudentResponse student = finder.find(new StudentId(id));
-        List<ClassResponse> classes = student.classesIds()
-                                             .stream()
-                                             .map(classId -> classFinder.find(new ClassId(classId)))
-                                             .collect(Collectors.toList());
+        List<ClassResponse> studentsClasses = student.classesIds()
+                                                     .stream()
+                                                     .map(classId -> classFinder.find(new ClassId(classId)))
+                                                     .collect(Collectors.toList());
+
+        List<ClassResponse> availableClasses =
+                allClassesSearcher.search()
+                                  .classes()
+                                  .stream()
+                                  .filter(classResponse -> !studentsClasses.contains(classResponse))
+                                  .collect(Collectors.toList());
 
         model.addAttribute("student", student);
-        model.addAttribute("classes", classes);
+        model.addAttribute("studentsClasses", studentsClasses);
+        model.addAttribute("availableClasses", availableClasses);
 
         return "student";
     }
@@ -82,5 +101,19 @@ public final class StudentsGetController {
         remover.remove(new StudentId(id));
 
         return "redirect:/students";
+    }
+
+    @RequestMapping(value = "/students/{studentId}/add/class/{classId}", method = RequestMethod.GET)
+    public String addClass(@PathVariable("studentId") String studentId, @PathVariable("classId") String classId) {
+        classRegisterer.register(new StudentId(studentId), new ClassId(classId));
+
+        return "redirect:/students/" + studentId;
+    }
+
+    @RequestMapping(value = "/students/{studentId}/remove/class/{classId}", method = RequestMethod.GET)
+    public String removeClass(@PathVariable("studentId") String studentId, @PathVariable("classId") String classId) {
+        classDeregisterer.deregister(new StudentId(studentId), new ClassId(classId));
+
+        return "redirect:/students/" + studentId;
     }
 }
